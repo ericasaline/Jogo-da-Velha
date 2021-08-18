@@ -2,4 +2,5 @@
 
 from src import __main__
 
-# ? = __main__.start()
+Start = __main__.start()
+
