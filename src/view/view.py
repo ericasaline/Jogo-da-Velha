@@ -92,10 +92,8 @@ class View():
         self.ganhadorX = tk.IntVar()
         self.ganhadorO = tk.IntVar()
 
-#==============================================================
-        # Variável guarda valor aleatório
+        # Variável guarda valor aleatório - posição
         self.num = tk.IntVar()
-#==============================================================
 
         # Variáveis auxiliares - botão posição = bp
         self.bp1 = tk.IntVar()
@@ -120,52 +118,55 @@ class View():
         self.btn1 = tk.Button(container, width=6, height=3, text=' ', 
                                         bg='cyan', fg='magenta', font='loma 16 bold')
         self.btn1.grid(column=0, row=0, padx=5, pady=5)
-#====================================================================
         self.btn1.bind('<Button-1>', self.jogadaX1)
-#====================================================================
 
         # Botão 2
         self.btn2 = tk.Button(container, width=6, height=3, text=' ', 
                                         bg='cyan', fg='magenta', font='loma 16 bold')
         self.btn2.grid(column=1, row=0, padx=5, pady=5)
-#====================================================================
         self.btn2.bind('<Button-1>', self.jogadaX2)
-#====================================================================
 
         # Botão 3
         self.btn3 = tk.Button(container, width=6, height=3, text=' ', 
                                         bg='cyan', fg='magenta', font='loma 16 bold')
         self.btn3.grid(column=2, row=0, padx=5, pady=5)
+        self.btn3.bind('<Button-1>', self.jogadaX3)
 
         # Botão 4
         self.btn4 = tk.Button(container, width=6, height=3, text=' ', 
                                         bg='cyan', fg='magenta', font='loma 16 bold')
         self.btn4.grid(column=0, row=1, padx=5, pady=5)
+        self.btn4.bind('<Button-1>', self.jogadaX4)
 
         # Botão 5
         self.btn5 = tk.Button(container, width=6, height=3, text=' ', 
                                         bg='cyan', fg='magenta', font='loma 16 bold')
         self.btn5.grid(column=1, row=1, padx=5, pady=5)
+        self.btn5.bind('<Button-1>', self.jogadaX5)
 
         # Botão 6
         self.btn6 = tk.Button(container, width=6, height=3, text=' ', 
                                         bg='cyan', fg='magenta', font='loma 16 bold')
         self.btn6.grid(column=2, row=1, padx=5, pady=5)
+        self.btn6.bind('<Button-1>', self.jogadaX6)
 
         # Botão 7
         self.btn7 = tk.Button(container, width=6, height=3, text=' ', 
                                         bg='cyan', fg='magenta', font='loma 16 bold')
         self.btn7.grid(column=0, row=2, padx=5, pady=5)
+        self.btn7.bind('<Button-1>', self.jogadaX7)
 
         # Botão 8
         self.btn8 = tk.Button(container, width=6, height=3, text=' ', 
                                         bg='cyan', fg='magenta', font='loma 16 bold')
         self.btn8.grid(column=1, row=2, padx=5, pady=5)
+        self.btn8.bind('<Button-1>', self.jogadaX8)
 
         # Botão 9
         self.btn9 = tk.Button(container, width=6, height=3, text=' ', 
                                         bg='cyan', fg='magenta', font='loma 16 bold')
         self.btn9.grid(column=2, row=2, padx=5, pady=5)
+        self.btn9.bind('<Button-1>', self.jogadaX9)
 
 
     # Função - label 
@@ -178,23 +179,44 @@ class View():
         self.txtline.grid(column=0, row=0, padx=5, pady=5)
 
 
-    # Funções para marcar X ou O no tabuleiro
-        # com vazio var = 0
-        # com X var = 1
-        # com O var = 2
-
 #===============================================================================
     # Função "aleatória" - Posição aleatória 
     def posAleatoria(self):
-        self.num = 2
-        #num = random.randint(1, 9)
-        #print(num)
+        #self.num = 2
+        self.num = random.randint(1, 9)
+        print(self.num)
         if self.num == 1:
             self.jogadaO1()
 
         if self.num == 2:
             self.jogadaO2()
 
+        if self.num == 3:
+            self.jogadaO3()
+
+        if self.num == 4:
+            self.jogadaO4()
+        
+        if self.num == 5:
+            self.jogadaO5()
+
+        if self.num == 6:
+            self.jogadaO6()
+
+        if self.num == 7:
+            self.jogadaO7()
+
+        if self.num == 8:
+            self.jogadaO8()
+
+        if self.num == 9:
+            self.jogadaO9()
+
+
+    # Funções para marcar X ou O no tabuleiro
+        # com 'vazio' -> var == 0
+        # com 'X' -> var == 1
+        # com 'O' -> var == 2
 
     def jogadaX1(self, event):
         if self.bp1 == 0:
@@ -204,8 +226,7 @@ class View():
             self.controller.fimdejogo()
             self.posAleatoria()
 
-
-    def jogadaO1(self, event):
+    def jogadaO1(self):
         if self.bp1 == 0:
             self.btn1['text'] = 'O'
             self.bp1 = 2
@@ -223,7 +244,6 @@ class View():
             self.controller.fimdejogo()
             self.posAleatoria()
 
-
     def jogadaO2(self):
         if self.bp2 == 0:
             self.btn2['text'] = 'O'
@@ -233,6 +253,131 @@ class View():
         else:
             self.posAleatoria()
 
+
+    def jogadaX3(self, event):
+        if self.bp3 == 0:
+            self.btn3['text'] = 'X'
+            self.bp3 = 1
+            self.controller.b3(self.bp3)
+            self.controller.fimdejogo()
+            self.posAleatoria()
+
+    def jogadaO3(self):
+        if self.bp3 == 0:
+            self.btn3['text'] = 'O'
+            self.bp3 = 2
+            self.controller.b3(self.bp3)
+            self.controller.fimdejogo()
+        else:
+            self.posAleatoria()
+
+
+    def jogadaX4(self, event):
+        if self.bp4 == 0:
+            self.btn4['text'] = 'X'
+            self.bp4 = 1
+            self.controller.b4(self.bp4)
+            self.controller.fimdejogo()
+            self.posAleatoria()
+
+    def jogadaO4(self):
+        if self.bp4 == 0:
+            self.btn4['text'] = 'O'
+            self.bp4 = 2
+            self.controller.b4(self.bp4)
+            self.controller.fimdejogo()
+        else:
+            self.posAleatoria()
+
+
+    def jogadaX5(self, event):
+        if self.bp5 == 0:
+            self.btn5['text'] = 'X'
+            self.bp5 = 1
+            self.controller.b5(self.bp5)
+            self.controller.fimdejogo()
+            self.posAleatoria()
+
+    def jogadaO5(self):
+        if self.bp5 == 0:
+            self.btn5['text'] = 'O'
+            self.bp5 = 2
+            self.controller.b5(self.bp5)
+            self.controller.fimdejogo()
+        else:
+            self.posAleatoria()
+
+    
+    def jogadaX6(self, event):
+        if self.bp6 == 0:
+            self.btn6['text'] = 'X'
+            self.bp6 = 1
+            self.controller.b6(self.bp6)
+            self.controller.fimdejogo()
+            self.posAleatoria()
+
+    def jogadaO6(self):
+        if self.bp6 == 0:
+            self.btn6['text'] = 'O'
+            self.bp6 = 2
+            self.controller.b6(self.bp6)
+            self.controller.fimdejogo()
+        else:
+            self.posAleatoria()
+
+
+    def jogadaX7(self, event):
+        if self.bp7 == 0:
+            self.btn7['text'] = 'X'
+            self.bp7 = 1
+            self.controller.b7(self.bp7)
+            self.controller.fimdejogo()
+            self.posAleatoria()
+
+    def jogadaO7(self):
+        if self.bp7 == 0:
+            self.btn7['text'] = 'O'
+            self.bp7 = 2
+            self.controller.b7(self.bp7)
+            self.controller.fimdejogo()
+        else:
+            self.posAleatoria()
+
+
+    def jogadaX8(self, event):
+        if self.bp8 == 0:
+            self.btn8['text'] = 'X'
+            self.bp8 = 1
+            self.controller.b8(self.bp8)
+            self.controller.fimdejogo()
+            self.posAleatoria()
+
+    def jogadaO8(self):
+        if self.bp8 == 0:
+            self.btn8['text'] = 'O'
+            self.bp8 = 2
+            self.controller.b8(self.bp8)
+            self.controller.fimdejogo()
+        else:
+            self.posAleatoria()
+
+
+    def jogadaX9(self, event):
+        if self.bp9 == 0:
+            self.btn9['text'] = 'X'
+            self.bp9 = 1
+            self.controller.b9(self.bp9)
+            self.controller.fimdejogo()
+            self.posAleatoria()
+
+    def jogadaO9(self):
+        if self.bp9 == 0:
+            self.btn9['text'] = 'O'
+            self.bp9 = 2
+            self.controller.b9(self.bp9)
+            self.controller.fimdejogo()
+        else:
+            self.posAleatoria()
 
 #===================================================================================
 
