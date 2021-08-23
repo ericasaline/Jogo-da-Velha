@@ -1,5 +1,6 @@
 from src.model.model import Model 
 from src.controller.controller import Controller 
+import random
 import sys
 import tkinter as tk
 from tkinter import ttk
@@ -91,6 +92,11 @@ class View():
         self.ganhadorX = tk.IntVar()
         self.ganhadorO = tk.IntVar()
 
+#==============================================================
+        # Variável guarda valor aleatório
+        self.num = tk.IntVar()
+#==============================================================
+
         # Variáveis auxiliares - botão posição = bp
         self.bp1 = tk.IntVar()
         self.bp2 = tk.IntVar()
@@ -114,11 +120,17 @@ class View():
         self.btn1 = tk.Button(container, width=6, height=3, text=' ', 
                                         bg='cyan', fg='magenta', font='loma 16 bold')
         self.btn1.grid(column=0, row=0, padx=5, pady=5)
+#====================================================================
+        self.btn1.bind('<Button-1>', self.jogadaX1)
+#====================================================================
 
         # Botão 2
         self.btn2 = tk.Button(container, width=6, height=3, text=' ', 
                                         bg='cyan', fg='magenta', font='loma 16 bold')
         self.btn2.grid(column=1, row=0, padx=5, pady=5)
+#====================================================================
+        self.btn2.bind('<Button-1>', self.jogadaX2)
+#====================================================================
 
         # Botão 3
         self.btn3 = tk.Button(container, width=6, height=3, text=' ', 
@@ -166,6 +178,72 @@ class View():
         self.txtline.grid(column=0, row=0, padx=5, pady=5)
 
 
+    # Funções para marcar X ou O no tabuleiro
+        # com vazio var = 0
+        # com X var = 1
+        # com O var = 2
+
+#===============================================================================
+    # Função "aleatória" - Posição aleatória 
+    def posAleatoria(self):
+        self.num = 2
+        #num = random.randint(1, 9)
+        #print(num)
+        if self.num == 1:
+            self.jogadaO1()
+
+        if self.num == 2:
+            self.jogadaO2()
+
+
+    def jogadaX1(self, event):
+        if self.bp1 == 0:
+            self.btn1['text'] = 'X'
+            self.bp1 = 1
+            self.controller.b1(self.bp1)
+            self.controller.fimdejogo()
+            self.posAleatoria()
+
+
+    def jogadaO1(self, event):
+        if self.bp1 == 0:
+            self.btn1['text'] = 'O'
+            self.bp1 = 2
+            self.controller.b1(self.bp1)
+            self.controller.fimdejogo()
+        else:
+            self.posAleatoria()
+
+
+    def jogadaX2(self, event):
+        if self.bp2 == 0:
+            self.btn2['text'] = 'X'
+            self.bp2 = 1
+            self.controller.b2(self.bp2)
+            self.controller.fimdejogo()
+            self.posAleatoria()
+
+
+    def jogadaO2(self):
+        if self.bp2 == 0:
+            self.btn2['text'] = 'O'
+            self.bp2 = 2
+            self.controller.b2(self.bp2)
+            self.controller.fimdejogo()
+        else:
+            self.posAleatoria()
+
+
+#===================================================================================
+
+    # Função mostra vencedor da partida - message box
+    def mostraVencedor(self):
+        self.ganhador = self.controller.retornaVencedor()
+        if self.ganhador != ' ':
+            messagebox.showinfo('FIM DE JOGO', self.ganhador)
+            self.novojogo()
+
+
     # Função reinicializa o jogo
     def novojogo(self):
         self.ganhadorX = self.controller.retornaVX()
@@ -209,4 +287,3 @@ class View():
     # Função encerra o programa
     def close(self, evento):
         sys.exit()
-
