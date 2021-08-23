@@ -1,5 +1,5 @@
-#from src.model.model import Model 
-#from src.controller.controller import Controller 
+from src.model.model import Model 
+from src.controller.controller import Controller 
 import sys
 import tkinter as tk
 from tkinter import ttk
@@ -15,8 +15,8 @@ class View():
         self.container = tk.Frame(self.root)
         self.container.pack()
 
-        #self.model = Model()
-        #self.controller = Controller(self, self.model)
+        self.model = Model()
+        self.controller = Controller(self, self.model)
 
         self.menu()
         self.jogo()
