@@ -1,6 +1,6 @@
 from src.model.model import Model 
 from src.controller.controller import Controller 
-from time import sleep
+#from time import sleep
 import random
 import sys
 import tkinter as tk
