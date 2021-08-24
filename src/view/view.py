@@ -1,8 +1,5 @@
 from src.model.model import Model 
 from src.controller.controller import Controller 
-#
-from time import sleep
-#
 import random
 import sys
 import tkinter as tk
@@ -52,7 +49,7 @@ class View():
 
     # Função mostra ajuda ao jogador - message box
     def ajuda(self):
-        messagebox.showinfo('AJUDA', '\nPara sair do jogo basta pressionar a tecla ESC \n\n# BOM JOGO! #')
+        messagebox.showinfo('AJUDA', '\n# Para iniciar basta apenas clicar em uma posição \n# Será realizada uma jogada logo após a sua \n# A cada jogada é verificado se há um vencedor \n# X = Jogador & O = Automàtico \n# Para sair do jogo basta pressionar a tecla ESC \n\n# BOM JOGO! #')
 
 
     # Função mostra autor do código - message box
@@ -187,6 +184,7 @@ class View():
     # Função valida jogada do PC - geradora de posição aleatória 
     def posAleatoria(self):
         if self.key == 1:
+
             self.num = random.randint(1, 9)
 
             if self.num == 1:
@@ -241,7 +239,6 @@ class View():
         else:
             self.posAleatoria()
 
-
     def jogadaX2(self, event):
         if self.bp2 == 0:
             self.btn2['text'] = 'X'
@@ -260,7 +257,6 @@ class View():
             self.controller.fimdejogo()
         else:
             self.posAleatoria()
-
 
     def jogadaX3(self, event):
         if self.bp3 == 0:
@@ -281,7 +277,6 @@ class View():
         else:
             self.posAleatoria()
 
-
     def jogadaX4(self, event):
         if self.bp4 == 0:
             self.btn4['text'] = 'X'
@@ -301,7 +296,6 @@ class View():
         else:
             self.posAleatoria()
 
-
     def jogadaX5(self, event):
         if self.bp5 == 0:
             self.btn5['text'] = 'X'
@@ -320,7 +314,6 @@ class View():
             self.controller.fimdejogo()
         else:
             self.posAleatoria()
-
     
     def jogadaX6(self, event):
         if self.bp6 == 0:
@@ -341,7 +334,6 @@ class View():
         else:
             self.posAleatoria()
 
-
     def jogadaX7(self, event):
         if self.bp7 == 0:
             self.btn7['text'] = 'X'
@@ -361,7 +353,6 @@ class View():
         else:
             self.posAleatoria()
 
-
     def jogadaX8(self, event):
         if self.bp8 == 0:
             self.btn8['text'] = 'X'
@@ -380,7 +371,6 @@ class View():
             self.controller.fimdejogo()
         else:
             self.posAleatoria()
-
 
     def jogadaX9(self, event):
         if self.bp9 == 0:
