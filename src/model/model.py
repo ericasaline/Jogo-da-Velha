@@ -1,7 +1,7 @@
 class Model():
     def __init__(self):
 
-         # Variáveis 
+        # Variáveis 
         self.vitX = 0
         self.vitO = 0
         self.sentinela = 0
@@ -64,7 +64,6 @@ class Model():
     # Jogador X - 1  Jogador O - 2   Empate - 3  Nenhum - 0
     def gameover(self):
         self.sentinela += 1
-
         # 1 2 3
         if self.bp1 == self.bp2 and self.bp1 == self.bp3 and self.bp1 != 0:
             self.vencedor = self.bp1
@@ -115,7 +114,6 @@ class Model():
     # Função guarda vencedor da partida
     # Jogador X - 1  Jogador O - 2   Empate - 3  Nenhum - 0
     def winner(self):
-
         if self.vencedor == 1:
             self.vitX +=1
             self.ganhador = 'Vencedor: Jogador X'

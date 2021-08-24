@@ -1,5 +1,6 @@
 from src.model.model import Model 
 from src.controller.controller import Controller 
+from time import sleep
 import random
 import sys
 import tkinter as tk
@@ -22,11 +23,9 @@ class View():
         self.menu()
         self.jogo()
         self.tabuleiro()
-
         self.line()
 
         self.root.bind('<Escape>', self.close)
-        
         self.root.mainloop()
 
 
@@ -93,7 +92,11 @@ class View():
         self.ganhadorO = tk.IntVar()
 
         # Variável guarda valor aleatório - posição
-        self.num = tk.IntVar()
+        self.num = tk.IntVar() 
+
+        # Variável chave - trava
+        self.key = tk.IntVar()
+        self.key = 0
 
         # Variáveis auxiliares - botão posição = bp
         self.bp1 = tk.IntVar()
@@ -179,40 +182,39 @@ class View():
         self.txtline.grid(column=0, row=0, padx=5, pady=5)
 
 
-#===============================================================================
-    # Função "aleatória" - Posição aleatória 
+    # Função valida jogada do PC - geradora de posição aleatória 
     def posAleatoria(self):
-        #self.num = 2
-        self.num = random.randint(1, 9)
-        print(self.num)
-        if self.num == 1:
-            self.jogadaO1()
+        if self.key == 1:
+            self.num = random.randint(1, 9)
 
-        if self.num == 2:
-            self.jogadaO2()
+            if self.num == 1:
+                self.jogadaO1()
 
-        if self.num == 3:
-            self.jogadaO3()
+            if self.num == 2:
+                self.jogadaO2()
 
-        if self.num == 4:
-            self.jogadaO4()
-        
-        if self.num == 5:
-            self.jogadaO5()
+            if self.num == 3:
+                self.jogadaO3()
 
-        if self.num == 6:
-            self.jogadaO6()
+            if self.num == 4:
+                self.jogadaO4()
+            
+            if self.num == 5:
+                self.jogadaO5()
 
-        if self.num == 7:
-            self.jogadaO7()
+            if self.num == 6:
+                self.jogadaO6()
 
-        if self.num == 8:
-            self.jogadaO8()
+            if self.num == 7:
+                self.jogadaO7()
 
-        if self.num == 9:
-            self.jogadaO9()
+            if self.num == 8:
+                self.jogadaO8()
 
+            if self.num == 9:
+                self.jogadaO9()
 
+    
     # Funções para marcar X ou O no tabuleiro
         # com 'vazio' -> var == 0
         # com 'X' -> var == 1
@@ -223,6 +225,7 @@ class View():
             self.btn1['text'] = 'X'
             self.bp1 = 1
             self.controller.b1(self.bp1)
+            self.key = 1
             self.controller.fimdejogo()
             self.posAleatoria()
 
@@ -231,6 +234,7 @@ class View():
             self.btn1['text'] = 'O'
             self.bp1 = 2
             self.controller.b1(self.bp1)
+            self.key = 0
             self.controller.fimdejogo()
         else:
             self.posAleatoria()
@@ -241,6 +245,7 @@ class View():
             self.btn2['text'] = 'X'
             self.bp2 = 1
             self.controller.b2(self.bp2)
+            self.key = 1
             self.controller.fimdejogo()
             self.posAleatoria()
 
@@ -249,6 +254,7 @@ class View():
             self.btn2['text'] = 'O'
             self.bp2 = 2
             self.controller.b2(self.bp2)
+            self.key = 0
             self.controller.fimdejogo()
         else:
             self.posAleatoria()
@@ -259,6 +265,7 @@ class View():
             self.btn3['text'] = 'X'
             self.bp3 = 1
             self.controller.b3(self.bp3)
+            self.key = 1
             self.controller.fimdejogo()
             self.posAleatoria()
 
@@ -267,6 +274,7 @@ class View():
             self.btn3['text'] = 'O'
             self.bp3 = 2
             self.controller.b3(self.bp3)
+            self.key = 0
             self.controller.fimdejogo()
         else:
             self.posAleatoria()
@@ -277,6 +285,7 @@ class View():
             self.btn4['text'] = 'X'
             self.bp4 = 1
             self.controller.b4(self.bp4)
+            self.key = 1
             self.controller.fimdejogo()
             self.posAleatoria()
 
@@ -285,6 +294,7 @@ class View():
             self.btn4['text'] = 'O'
             self.bp4 = 2
             self.controller.b4(self.bp4)
+            self.key = 0
             self.controller.fimdejogo()
         else:
             self.posAleatoria()
@@ -295,6 +305,7 @@ class View():
             self.btn5['text'] = 'X'
             self.bp5 = 1
             self.controller.b5(self.bp5)
+            self.key = 1
             self.controller.fimdejogo()
             self.posAleatoria()
 
@@ -303,6 +314,7 @@ class View():
             self.btn5['text'] = 'O'
             self.bp5 = 2
             self.controller.b5(self.bp5)
+            self.key = 0
             self.controller.fimdejogo()
         else:
             self.posAleatoria()
@@ -313,6 +325,7 @@ class View():
             self.btn6['text'] = 'X'
             self.bp6 = 1
             self.controller.b6(self.bp6)
+            self.key = 1
             self.controller.fimdejogo()
             self.posAleatoria()
 
@@ -321,6 +334,7 @@ class View():
             self.btn6['text'] = 'O'
             self.bp6 = 2
             self.controller.b6(self.bp6)
+            self.key = 0
             self.controller.fimdejogo()
         else:
             self.posAleatoria()
@@ -331,6 +345,7 @@ class View():
             self.btn7['text'] = 'X'
             self.bp7 = 1
             self.controller.b7(self.bp7)
+            self.key = 1
             self.controller.fimdejogo()
             self.posAleatoria()
 
@@ -339,6 +354,7 @@ class View():
             self.btn7['text'] = 'O'
             self.bp7 = 2
             self.controller.b7(self.bp7)
+            self.key = 0
             self.controller.fimdejogo()
         else:
             self.posAleatoria()
@@ -349,6 +365,7 @@ class View():
             self.btn8['text'] = 'X'
             self.bp8 = 1
             self.controller.b8(self.bp8)
+            self.key = 1
             self.controller.fimdejogo()
             self.posAleatoria()
 
@@ -357,6 +374,7 @@ class View():
             self.btn8['text'] = 'O'
             self.bp8 = 2
             self.controller.b8(self.bp8)
+            self.key = 0
             self.controller.fimdejogo()
         else:
             self.posAleatoria()
@@ -367,6 +385,7 @@ class View():
             self.btn9['text'] = 'X'
             self.bp9 = 1
             self.controller.b9(self.bp9)
+            self.key = 1
             self.controller.fimdejogo()
             self.posAleatoria()
 
@@ -375,11 +394,11 @@ class View():
             self.btn9['text'] = 'O'
             self.bp9 = 2
             self.controller.b9(self.bp9)
+            self.key = 0
             self.controller.fimdejogo()
         else:
             self.posAleatoria()
 
-#===================================================================================
 
     # Função mostra vencedor da partida - message box
     def mostraVencedor(self):
@@ -391,6 +410,7 @@ class View():
 
     # Função reinicializa o jogo
     def novojogo(self):
+        self.key = 0
         self.ganhadorX = self.controller.retornaVX()
         self.ganhadorO = self.controller.retornaVO()
         self.txtline['text'] = (f'# Jogador X - [ {self.ganhadorX} ] vs Jogador O - [ {self.ganhadorO} ] #') 

@@ -4,6 +4,8 @@ class Controller():
         self.view = view
         self.model = model
 
+    # Funções - Chamada 
+
     def b1(self, bp1):
         self.model.atbtn1(bp1)
 
@@ -66,4 +68,3 @@ class Controller():
     def retornaVO(self):
         vo = self.model.returnVO()
         return vo
-
