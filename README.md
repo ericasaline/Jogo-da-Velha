@@ -16,7 +16,3 @@
 <img src="https://github.com/ericasaline/Jogo-da-Velha/blob/main/imgs/img2.PNG" alt="Jogo da Velha - Ajuda" width="600"/>
 
 > *app.py == main*
-
-> *Desenvolvido apenas por diversão!*
-
-
